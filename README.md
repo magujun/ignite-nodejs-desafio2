@@ -1,6 +1,6 @@
 # 💻 Rocketseat's Ignite - Trilha Node.js
 
-## Desafio 2 🚀
+## [Desafio 2](https://www.notion.so/Desafio-02-Trabalhando-com-middlewares-4f89bf538c2e4ee291382b92bdc36790#1ac72354b1184b389a1640ff1a87955e) 🚀
 
 Essa será uma aplicação para gerenciar tarefas (em inglês *todo*) e nesse desafio você irá trabalhar mais a fundo com middlewares no Express.  
 Dessa vez teremos um plano grátis onde o usuário só pode criar até dez todos e um plano Pro que irá permitir criar todos ilimitados, isso tudo usando middlewares para fazer as validações necessárias.
