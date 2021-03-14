@@ -20,31 +20,45 @@ function checksExistsUserAccount(request, response, next) {
 }
 
 function checksCreateTodosUserAvailability(request, response, next) {
-  const { username } = request.headers;
-  const user = users.find(user => user.username === username);
+  const user = request.user;
+  if(!user) {
+		return response.status(404).json({ error: 'User not valid!' });
+  };
   const todos = user.todos.length;
   if (todos >= 10 && !user.pro) {
-    return response.status(404).json({ error: 'You´ve reached the maximum number of free todos, update to PRO to create new todos!'})
+    return response.status(403).json({ error: 'You´ve reached the maximum number of free todos, update to PRO to create new todos!'})
   }
   return next();
 }
 
 function checksTodoExists(request, response, next) {
   const { username } = request.headers;
+  const user = users.find(user => user.username === username);
+	if(!user) {
+		return response.status(404).json({ error: 'User not found!' });
+  };
   const { id } = request.params;
   const validateId = validate(id, 4);
-  const user = users.find(user => user.username === username);
+  if(validateId !== true) {
+    return response.status(400).json({ error: 'Todo id not valid!' })
+  };
   const todo = user.todos.find(todo => todo.id === id);
-  if (validateId === true && user && todo) {
+  if (!todo) {
+    return response.status(404).json({ error: 'Todo does not exist!' });
+  }
     request.todo = todo;
     request.user = user;
     return next();
-  }
-  return next();
-}
+  };
 
 function findUserById(request, response, next) {
-  // Complete aqui
+  const { id } = request.params;
+  const user = users.find(user => user.id === id);
+	if(!user) {
+		return response.status(404).json({ error: 'User not found!' });
+  };
+  request.user = user;
+  return next();
 }
 
 app.post('/users', (request, response) => {
