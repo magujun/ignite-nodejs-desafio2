@@ -1,4 +1,4 @@
-# 💻 Rocketseat's Ignite [ ] Trilha Node.js
+# 💻 Rocketseat's Ignite - Trilha Node.js
 
 ## Desafio 2 🚀
 
