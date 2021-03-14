@@ -42,7 +42,7 @@ describe('checksTodoExists', () => {
     mockNext = jest.fn();
   });
 
-  it('should be able to put user and todo in request when both exits', () => {
+  it('should be able to put user and todo in request when both exist', () => {
     const todo = {
       id: v4(),
       title: 'bip bip',
@@ -88,7 +88,7 @@ describe('checksTodoExists', () => {
     expect(mockNext).toBeCalled();
   });
 
-  it('should not be able to put user and todo in request when user does not exists', () => {
+  it('should not be able to put user and todo in request when user does not exist', () => {
     const todo = {
       id: v4(),
       title: 'bip bip',
